@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="companyForm" (ngSubmit)="submitRegistration()" novalidate >
+        <div>
+            <h1>Add a new company</h1>
+        </div>
+        <div >
+            <div class="formGroup">
+                <label>Company Code</label>
+                <input type="text" class="form-control" formControlName="companyCode" required autofocus>
+            </div>
+            <div class="formGroup">
+                <label>Company Name</label>
+                <input type="text" class="form-control" formControlName="companyName" required autofocus>
+            </div>
+        </div>
+        <div >
+            <div class="formGroup">
+                <label>CEO</label>
+                <input type="text" class="form-control" formControlName="ceo" required autofocus>
+            </div>
+            <div class="formGroup">
+                <label>Turnover Rate</label>
+                <input type="text" class="form-control" formControlName="turnover" required autofocus>
+            </div>
+        </div>
+        <div >
+            <div class="formGroup">
+                <label>Website</label>
+                <input type="text" class="form-control" formControlName="website" required autofocus>
+            </div>
+            <div class="formGroup">
+                <label>Exchange</label>
+                <input type="text" class="form-control" formControlName="exchange" required autofocus>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register Company</button>
+        <h5>{{validMessage}}</h5>
+    </form>
+</div>

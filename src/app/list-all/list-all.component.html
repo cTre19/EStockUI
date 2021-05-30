@@ -1,0 +1,30 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Company Code</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Latest Price</th>
+            <th scope="col">Stock Price Date</th>
+            <th scope="col">Turnover</th>
+            <th scope="col">Website</th>
+            <th scope="col">Exchange</th>
+            <th scope="col">CEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let info of companyInfoList">
+            <td>{{ info?.company?.companyCode }}</td>
+            <td>{{ info?.company?.companyName }}</td>
+            <td>{{ info?.stock?.price }}</td>
+            <td>{{ info?.stock?.date }}</td>
+            <td>{{ info?.company?.turnover }}</td>
+            <td>{{ info?.company?.website}}</td>
+            <td>{{ info?.company?.exchange }}</td>
+            <td>{{ info?.company?.ceo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
