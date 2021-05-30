@@ -1,0 +1,9 @@
+<div class="container card">
+        <h2>Search Stocks by Date</h2>
+            <label>Stock Code</label>
+            <p-dropdown [options]="companyCodeList" [(ngModel)]="selectedCompanyCode" placeholder="Select a Company" optionLabel="name" optionValue="code" [showClear]="false" ></p-dropdown>    
+            <label>Start Date</label>
+            <p-calendar></p-calendar>
+            <label>End Date</label> 
+            <p-calendar></p-calendar>
+</div>

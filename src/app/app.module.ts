@@ -6,22 +6,33 @@ import { AppComponent } from './app.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyService } from './services/company.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListAllComponent } from './list-all/list-all.component';
+import { SearchStocksComponent } from './search-stocks/search-stocks.component';
+import { StockService } from './services/stock.service';
+import { DropdownModule} from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCompanyComponent,
-    ListAllComponent
+    ListAllComponent,
+    SearchStocksComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    DropdownModule,
+    CalendarModule,
+    BrowserAnimationsModule
   ],
-  providers: [CompanyService],
+  providers: [CompanyService, StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

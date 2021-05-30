@@ -28,4 +28,12 @@ export class CompanyService {
     return this.http.get<CompanyStock[]>(this.baseUrl + this.serviceUrl + '/getall');
   }
 
+  getCompanyInfo(companyCode: string): Observable<CompanyStock> {
+    return this.http.get<CompanyStock>(this.baseUrl + this. serviceUrl + '/info/' + companyCode);
+  }
+
+  deleteCompany(companyCode: string) {
+    return this.http.delete(this.baseUrl + this.serviceUrl + '/delete/' + companyCode);
+  }
+
 }
