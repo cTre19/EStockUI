@@ -1,9 +1,30 @@
-<div class="container card">
-        <h2>Search Stocks by Date</h2>
-            <label>Stock Code</label>
-            <p-dropdown [options]="companyCodeList" [(ngModel)]="selectedCompanyCode" placeholder="Select a Company" optionLabel="name" optionValue="code" [showClear]="false" ></p-dropdown>    
-            <label>Start Date</label>
-            <p-calendar></p-calendar>
-            <label>End Date</label> 
-            <p-calendar></p-calendar>
+<p-dropdown [options]="companyList" placeholder="Select a Company" [(ngModel)]="selectedCompany">
+</p-dropdown>
+<label>Start Date</label>
+<p-calendar [(ngModel)]="selectedStartDate"></p-calendar>
+<label>End Date</label>
+<p-calendar [(ngModel)]="selectedEndDate"></p-calendar>
+<button class="btn btn-primary margin-top-5" (click)="searchStocks()">Search</button>
+<!-- <div>
+    <form (ngSubmit)="searchStocks()" novalidate>
+        <div class="container-card">
+<h2 class="center">Search Stocks by Date</h2>
+<div class="row">
+    <div class="col-md-4">
+        <label>Stock Code</label>
+
+    </div>
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-4">
+
+    </div>
 </div>
+</div>
+<h4 class="errorMessage">{{errorMessage}}</h4>
+</form>
+</div>
+<div class="container" *ngIf="stockList.length >0">
+    <h2>Stock list size > 0</h2>
+</div>  -->

@@ -1,4 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
-:host ::ng-deep .p-dropdown {
-    width: 14rem;
-}
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/primeng.min.css';
+html {
+    height: 100%;
+  }
+  
+  body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-rendering: optimizeLegibility;
+    position: relative;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Courier New', sans-serif;
+    font-weight: normal;
+    font-size: 1.5em;
+    background: linear-gradient(150deg,#D5E3F1 15%,#FFFBD9 70%,#FFDFCB 94%);
+  }
+  
+  h1 {
+    font-size: 2.0em;
+  }
+  
+  .table-bordered, .table-bordered td, .table-bordered th {
+    border: 1px solid #2F465D;
+  }
+
+  .errorMessage {
+      border: black;
+      text-align: center;
+      background-color: red;
+      color: black;
+      margin-top: 5%;
+  }
+
+  .successMessage {
+      border: black;
+      background-color: lightgreen;
+      text-align: center;
+      color: black;
+      margin-top: 5%;
+  }
+
+  .margin-top-5 {
+      margin-top: 5%;
+  }
+
+  .float-right {
+      float: left;
+  }
+
+  .center {
+    text-align: center;
+  }
