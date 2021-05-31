@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
-import { CompanyInterface } from '../models/company.interface';
-import { Company } from '../models/company.model';
-import { CompanyStock } from '../models/companystock.model';
+import { NameCode } from '../models/namecode.model';
+import { SearchStock } from '../models/search-stock.model';
 import { Stock } from '../models/stock.model';
 import { CompanyService } from '../services/company.service';
 import { StockService } from '../services/stock.service';
-// import { DropdownModule } from 'primeng/dropdown';
 
 
 @Component({
@@ -17,58 +14,42 @@ import { StockService } from '../services/stock.service';
 })
 export class SearchStocksComponent implements OnInit {
 
-  companyList: SelectItem[];
-  selectedCompany!: SelectItem;
-  selectedStartDate!: Date;
-  selectedEndDate!: Date;
-  stockList: Stock[];
-  // companyStocklist: CompanyStock[] = new Array;
-  // searchFlag: boolean = false;
-  // searchStocksForm: FormGroup;
-  errorMessage: string = '';
+  searchStock: SearchStock;
 
 
   constructor(private stockService: StockService,
     private companyService: CompanyService) {
-    this.companyList = [
-      { label: 'Amazon', value: 'AMZ' },
-      { label: 'Cognizant', value: 'CTSH' }
-    ];
-    this.stockList = new Array;
+      this.searchStock = new SearchStock();
   }
 
   ngOnInit() {
-
+    this.fetchCompanyNames();
   }
 
   fetchCompanyNames(): void {
-    this.companyService.getAllCompaniesInfo().subscribe(
-      data => {
+    this.companyService.getAllNamesAndCodes().subscribe(
+      (data: NameCode[]) => {
         console.log('loading company info');
-        // this.companyStocklist = data;
-      }
-    )
+        data.forEach(c => {
+          this.searchStock.companyList.push({label: c.companyName, value: c.companyCode});
+        });
+      });
   }
 
-  // changeStockCode(selectedValue: any) {
-  //   this.selectedCompany = selectedValue;
-  //   console.log(this.selectedCompany);
-  // }
-
   searchStocks() {
-    if (!this.selectedCompany || !this.selectedStartDate || !this.selectedEndDate) {
-      this.errorMessage = 'All fields are required before submitting the form!';
+    if (!this.searchStock.selectedCompany || !this.searchStock.selectedStartDate || !this.searchStock.selectedEndDate) {
+      this.searchStock.errorMessage = 'All fields are required before submitting the form!';
     } else {
-      this.errorMessage = '';
-      console.log(this.selectedCompany);
-      console.log(this.selectedStartDate);
-      console.log(this.selectedEndDate);
+      this.searchStock.errorMessage = '';
+      console.log(this.searchStock.selectedCompany);
+      console.log(this.searchStock.selectedStartDate);
+      console.log(this.searchStock.selectedEndDate);
 
-      this.stockService.searchStockByDateRange(this.selectedCompany.toString(),
-        this.selectedStartDate.toISOString(), this.selectedEndDate.toISOString()).subscribe(
+      this.stockService.searchStockByDateRange(this.searchStock.selectedCompany.toString(),
+        this.searchStock.selectedStartDate.toISOString(), this.searchStock.selectedEndDate.toISOString()).subscribe(
           data => {
             console.log('inside searchStocks');
-            this.stockList = data;
+            this.searchStock.stockList = data;
           },
           error => {
             console.error('unable to search stocks');

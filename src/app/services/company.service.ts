@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Company } from '../models/company.model';
 import { CompanyStock } from '../models/companystock.model';
 import { Observable } from 'rxjs';
+import { NameCode } from '../models/namecode.model';
 
 
 const httpOptions = {
@@ -34,6 +35,10 @@ export class CompanyService {
 
   deleteCompany(companyCode: string) {
     return this.http.delete(this.baseUrl + this.serviceUrl + '/delete/' + companyCode);
+  }
+
+  getAllNamesAndCodes(): Observable<NameCode[]> {
+    return this.http.get<NameCode[]>(this.baseUrl + this.serviceUrl + '/getallnamesandcodes');
   }
 
 }

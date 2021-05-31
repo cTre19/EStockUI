@@ -6,24 +6,24 @@
                 <label>Company Name:</label>
             </div>
             <div class="row">
-                <p-dropdown [options]="companyList" placeholder="Select a Company" [(ngModel)]="selectedCompany">
-                </p-dropdown>
+                <p-dropdown [options]="searchStock.companyList" placeholder="Select a Company"
+                 [(ngModel)]="searchStock.selectedCompany"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">
             <label>Start Date:</label>
-            <p-calendar [(ngModel)]="selectedStartDate"></p-calendar>
+            <p-calendar [(ngModel)]="searchStock.selectedStartDate"></p-calendar>
         </div>
         <div class="col-md-4">
             <label>End Date:</label>
-            <p-calendar [(ngModel)]="selectedEndDate"></p-calendar>
+            <p-calendar [(ngModel)]="searchStock.selectedEndDate"></p-calendar>
         </div>
     </div>
     <button class="btn btn-primary margin-top-5" (click)="searchStocks()">Search</button>
-    <h4 class="errorMessage">{{errorMessage}}</h4>
+    <h4 class="errorMessage">{{searchStock.errorMessage}}</h4>
 </div>
-<div class="container-card" *ngIf="stockList.length > 0">
-    <div class="card my-5">
+<div class="container-card" *ngIf="searchStock.stockList.length > 0">
+    <div class="card my-3">
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
@@ -34,13 +34,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let stock of stockList">
+                    <tr *ngFor="let stock of searchStock.stockList">
                         <td>{{ stock?.companyCode }}</td>
                         <td>{{ stock?.price }}</td>
                         <td>{{ stock?.date }}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Minimum:</label>
+                <h3>{{searchStock.min}</h3>
+            </div>
+            <div class="col-sm-4">
+                <label>Maximum:</label>
+                <h3>{{searchStock.max}</h3>
+            </div>
+            <div class="col-sm-4">
+                <label>Average:</label>
+                <h3>{{searchStock.average}</h3>
+            </div>
         </div>
     </div>
 </div>
