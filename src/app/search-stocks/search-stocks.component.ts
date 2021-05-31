@@ -7,7 +7,7 @@ import { CompanyStock } from '../models/companystock.model';
 import { Stock } from '../models/stock.model';
 import { CompanyService } from '../services/company.service';
 import { StockService } from '../services/stock.service';
-import { DropdownModule } from 'primeng/dropdown';
+// import { DropdownModule } from 'primeng/dropdown';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class SearchStocksComponent implements OnInit {
   selectedCompany!: SelectItem;
   selectedStartDate!: Date;
   selectedEndDate!: Date;
-  stockList!: Stock[];
+  stockList: Stock[];
   // companyStocklist: CompanyStock[] = new Array;
   // searchFlag: boolean = false;
   // searchStocksForm: FormGroup;
@@ -29,16 +29,12 @@ export class SearchStocksComponent implements OnInit {
 
 
   constructor(private stockService: StockService,
-    private companyService: CompanyService, private dropdown: DropdownModule) {
+    private companyService: CompanyService) {
     this.companyList = [
       { label: 'Amazon', value: 'AMZ' },
       { label: 'Cognizant', value: 'CTSH' }
     ];
-    // this.searchStocksForm = new FormGroup({
-    //   companyCode: new FormControl(''),
-    //   selectedStartDate: new FormControl(),
-    //   selectedEndDate: new FormControl()
-    // });
+    this.stockList = new Array;
   }
 
   ngOnInit() {
@@ -60,21 +56,25 @@ export class SearchStocksComponent implements OnInit {
   // }
 
   searchStocks() {
-    console.log(this.selectedCompany);
-    console.log(this.selectedStartDate);
-    console.log(this.selectedEndDate);
-    
-    // this.errorMessage = 'All fields are required before submitting the form!';
-    this.stockService.searchStockByDateRange(this.selectedCompany.toString(),
-      this.selectedStartDate.toISOString(), this.selectedEndDate.toISOString()).subscribe(
-        data => {
-          console.log('inside searchStocks');
-          this.stockList = data;
-        },
-        error => {
-          console.error('unable to search stocks');
-        }
-      );
+    if (!this.selectedCompany || !this.selectedStartDate || !this.selectedEndDate) {
+      this.errorMessage = 'All fields are required before submitting the form!';
+    } else {
+      this.errorMessage = '';
+      console.log(this.selectedCompany);
+      console.log(this.selectedStartDate);
+      console.log(this.selectedEndDate);
+
+      this.stockService.searchStockByDateRange(this.selectedCompany.toString(),
+        this.selectedStartDate.toISOString(), this.selectedEndDate.toISOString()).subscribe(
+          data => {
+            console.log('inside searchStocks');
+            this.stockList = data;
+          },
+          error => {
+            console.error('unable to search stocks');
+          }
+        );
+    }
   }
 
 }
