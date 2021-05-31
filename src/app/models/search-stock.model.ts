@@ -1,21 +1,23 @@
 import { SelectItem } from "primeng/api";
-import { Stock } from "./stock.model";
+import { StatisticsModel } from "./statistics-model";
+import { StockModel } from "./stock.model";
 
-export class SearchStock {
+export class SearchStockModel {
 
     companyList: SelectItem[];
     selectedCompany?: SelectItem;
-    stockList: Stock[];
+    stockList: StockModel[];
     selectedStartDate?: Date;
     selectedEndDate?: Date;
     errorMessage: string;
-    min?: number;
-    max?: number;
-    average?: number;
+    stats: StatisticsModel;
+    hasSearched: boolean;
 
     constructor() {
         this.companyList = new Array();
         this.stockList = new Array();
         this.errorMessage = '';
+        this.hasSearched = false;
+        this.stats = new StatisticsModel();
     }
 }

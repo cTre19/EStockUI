@@ -1,4 +1,4 @@
-export class Stock {
+export class StockModel {
 
     public companyCode: string;
     public price: number;

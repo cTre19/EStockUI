@@ -5,8 +5,8 @@ html {
   }
   
   body {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
     text-rendering: optimizeLegibility;
     position: relative;
     min-height: 100%;

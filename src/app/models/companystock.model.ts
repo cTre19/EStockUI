@@ -1,13 +1,13 @@
 import { stringify } from "@angular/compiler/src/util";
-import { Company } from "./company.model";
-import { Stock } from "./stock.model";
+import { CompanyModel } from "./company.model";
+import { StockModel } from "./stock.model";
 
-export class CompanyStock {
+export class CompanyStockModel {
 
-    public stock: Stock;
-    public company: Company;
+    public stock: StockModel;
+    public company: CompanyModel;
 
-    constructor(stock: Stock, comp: Company) {
+    constructor(stock: StockModel, comp: CompanyModel) {
         this.stock = stock;
         this.company = comp;
     }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Company } from '../models/company.model';
-import { CompanyStock } from '../models/companystock.model';
+import { CompanyModel } from '../models/company.model';
+import { CompanyStockModel } from '../models/companystock.model';
 import { Observable } from 'rxjs';
 import { NameCode } from '../models/namecode.model';
 
@@ -20,17 +20,17 @@ export class CompanyService {
     this.serviceUrl = '/api/v1.0/market/company';
    }
 
-  registerCompany(company: Company) {
+  registerCompany(company: CompanyModel) {
     const body = JSON.stringify(company);
     return this.http.post(this.baseUrl + this.serviceUrl + '/register', body, httpOptions);
   }
 
-  getAllCompaniesInfo(): Observable<CompanyStock[]> {
-    return this.http.get<CompanyStock[]>(this.baseUrl + this.serviceUrl + '/getall');
+  getAllCompaniesInfo(): Observable<CompanyStockModel[]> {
+    return this.http.get<CompanyStockModel[]>(this.baseUrl + this.serviceUrl + '/getall');
   }
 
-  getCompanyInfo(companyCode: string): Observable<CompanyStock> {
-    return this.http.get<CompanyStock>(this.baseUrl + this. serviceUrl + '/info/' + companyCode);
+  getCompanyInfo(companyCode: string): Observable<CompanyStockModel> {
+    return this.http.get<CompanyStockModel>(this.baseUrl + this. serviceUrl + '/info/' + companyCode);
   }
 
   deleteCompany(companyCode: string) {

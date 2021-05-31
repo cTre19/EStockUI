@@ -1,4 +1,4 @@
-export class Company {
+export class CompanyModel {
 
     public companyCode: string;
     public companyName: string;

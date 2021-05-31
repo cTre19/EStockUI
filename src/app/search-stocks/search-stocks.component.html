@@ -6,55 +6,59 @@
                 <label>Company Name:</label>
             </div>
             <div class="row">
-                <p-dropdown [options]="searchStock.companyList" placeholder="Select a Company"
-                 [(ngModel)]="searchStock.selectedCompany"></p-dropdown>
+                <p-dropdown [options]="searchStockModel.companyList" placeholder="Select a Company"
+                    [(ngModel)]="searchStockModel.selectedCompany"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">
             <label>Start Date:</label>
-            <p-calendar [(ngModel)]="searchStock.selectedStartDate"></p-calendar>
+            <p-calendar [(ngModel)]="searchStockModel.selectedStartDate"></p-calendar>
         </div>
         <div class="col-md-4">
             <label>End Date:</label>
-            <p-calendar [(ngModel)]="searchStock.selectedEndDate"></p-calendar>
+            <p-calendar [(ngModel)]="searchStockModel.selectedEndDate"></p-calendar>
         </div>
     </div>
     <button class="btn btn-primary margin-top-5" (click)="searchStocks()">Search</button>
-    <h4 class="errorMessage">{{searchStock.errorMessage}}</h4>
+    <h4 class="errorMessage">{{searchStockModel.errorMessage}}</h4>
 </div>
-<div class="container-card" *ngIf="searchStock.stockList.length > 0">
+<div class="container" *ngIf="searchStockModel.stockList.length > 0">
     <div class="card my-3">
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Company Code</th>
                         <th scope="col">Price</th>
                         <th scope="col">Stock Price Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let stock of searchStock.stockList">
-                        <td>{{ stock?.companyCode }}</td>
+                    <tr *ngFor="let stock of searchStockModel.stockList">
                         <td>{{ stock?.price }}</td>
                         <td>{{ stock?.date }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    <div>
+        <h3 class="center">Statistics:</h3>
         <div class="row">
             <div class="col-sm-4">
                 <label>Minimum:</label>
-                <h3>{{searchStock.min}</h3>
+                <h4>{{searchStockModel.stats.min}}</h4>
             </div>
             <div class="col-sm-4">
                 <label>Maximum:</label>
-                <h3>{{searchStock.max}</h3>
+                <h4>{{searchStockModel.stats.max}}</h4>
             </div>
             <div class="col-sm-4">
                 <label>Average:</label>
-                <h3>{{searchStock.average}</h3>
+                <h4>{{searchStockModel.stats.avg}}</h4>
             </div>
         </div>
     </div>
+</div>
+<div class="center" *ngIf=noResultsFound()>
+    <h3>No stocks found within the given time period!</h3>
 </div>

@@ -1,4 +1,4 @@
-<div class="card my-5">
+<div class="card my-3">
     <div class="card-body">
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let info of companyInfoList">
-            <td>{{ info?.company?.companyCode }}</td>
+            <td>{{ info?.company?.companyCode?.toUpperCase() }}</td>
             <td>{{ info?.company?.companyName }}</td>
             <td>{{ info?.stock?.price }}</td>
             <td>{{ info?.stock?.date }}</td>

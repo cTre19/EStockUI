@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Stock } from '../models/stock.model';
+import { StatisticsModel } from '../models/statistics-model';
+import { StockModel } from '../models/stock.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -18,12 +19,18 @@ export class StockService {
    }
 
    searchStockByDateRange(companyCode: string, startDate: string, endDate: string):
-    Observable<Stock[]> {
-      return this.http.get<Stock[]>(this.baseUrl + this.serviceUrl + '/get/' + companyCode + '/' +
+    Observable<StockModel[]> {
+      return this.http.get<StockModel[]>(this.baseUrl + this.serviceUrl + '/get/' + companyCode + '/' +
         startDate + '/' + endDate);
    }
 
-   addStockToCompany(stock: Stock) {
+   fetchStockStatsByDateRange(companyCode: string, startDate: string, endDate: string):
+    Observable<StatisticsModel> {
+      return this.http.get<StatisticsModel>(this.baseUrl + this.serviceUrl + '/getstats/' + companyCode + '/' +
+        startDate + '/' + endDate);
+   }
+
+   addStockToCompany(stock: StockModel) {
      const body = JSON.stringify(stock);
       return this.http.post(this.baseUrl + this.serviceUrl + '/add/' + stock.companyCode, body, httpOptions);
    }
