@@ -38,7 +38,7 @@ export class CompanyService {
   }
 
   getAllNamesAndCodes(): Observable<NameCode[]> {
-    return this.http.get<NameCode[]>(this.baseUrl + this.serviceUrl + '/getallnamesandcodes');
+    return this.http.get<NameCode[]>(this.baseUrl + this.serviceUrl + '/getall/namesandcodes');
   }
 
 }

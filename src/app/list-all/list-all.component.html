@@ -6,7 +6,7 @@
             <th scope="col">Company Code</th>
             <th scope="col">Company Name</th>
             <th scope="col">Latest Price</th>
-            <th scope="col">Stock Price Date</th>
+            <th scope="col">Price Date</th>
             <th scope="col">Turnover</th>
             <th scope="col">Website</th>
             <th scope="col">Exchange</th>
@@ -17,8 +17,8 @@
           <tr *ngFor="let info of companyInfoList">
             <td>{{ info?.company?.companyCode?.toUpperCase() }}</td>
             <td>{{ info?.company?.companyName }}</td>
-            <td>{{ info?.stock?.price }}</td>
-            <td>{{ info?.stock?.date }}</td>
+            <td>${{ info?.stock?.price }}</td>
+            <td>{{ info?.stock?.createdDate }}</td>
             <td>{{ info?.company?.turnover }}</td>
             <td>{{ info?.company?.website}}</td>
             <td>{{ info?.company?.exchange }}</td>
