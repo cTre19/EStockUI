@@ -14,7 +14,7 @@ export class StockService {
   private serviceUrl: string;
   
   constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:8080';
+    this.baseUrl = 'http://localhost:9000';
     this.serviceUrl = '/api/v1.0/market/stock';
    }
 

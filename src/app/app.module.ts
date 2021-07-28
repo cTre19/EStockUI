@@ -13,6 +13,7 @@ import { StockService } from './services/stock.service';
 import { DropdownModule} from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     AddCompanyComponent,
     ListAllComponent,
-    SearchStocksComponent
+    SearchStocksComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
