@@ -14,6 +14,7 @@ import { DropdownModule} from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     CalendarModule,
     BrowserAnimationsModule
   ],
-  providers: [CompanyService, StockService],
+  providers: [CompanyService, StockService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
